@@ -1,0 +1,70 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <input type="text" v-on:input="alterarTitulo">
+    <p>{{titulo}}</p>
+
+    <p>{{saudacao()}}</p> <!--Chamando o return de um método-->
+    
+    <span v-once>{{titulo}}</span> <!--v-once define que um atributo jamais será alterado, economizando recursos-->
+
+    <br>
+    <a v-bind:href="linkGoogle" target="_blank">Google</a> <!--v-bind manda o valor de uma var da vue instance para o HTML-->
+
+    <h3>Inserindo HTML diretamente do data vue instance:</h3>
+    <p v-html="linkHtml"></p>
+
+    <p>{{contador}}</p>
+    <button v-on:click="somar">Somar 1</button>
+
+    <h3>Eventos:</h3>
+
+    <h4>Mousemove:</h4>
+
+    <p v-on:mousemove="atualizarMouse($event)">
+        Mouse move evento: {{x}} e {{y}}
+        <span v-on:mousemove.stop="">Parar Propagação do evento</span> <!--Interrompendo uma propagação de evento-->
+    </p> <!--Passando um evento como parâmetro explicitamente-->
+
+    <h4>Click:</h4>
+    <p>
+        <a v-bind:href="linkGoogle" v-on:click.prevent="" target="_blank">Google</a> <!--Previne evento padrão-->
+    </p>
+
+    <h4>KeyUp:</h4>
+
+    <input type="text" v-on:keyup.enter.alt="notificaEnter">
+</div>
+
+<script>
+    new Vue({
+        el: '#app', //referencia um elemento do DOM
+        data: { //dados a serem manipulados
+            titulo: 'Usando VueJS', //dados e funções não podem ter mesmo nome
+            linkGoogle: "https://google.com.br",
+            linkHtml: '<a href="https://guilhermerocha.tk" target="_black">Portfólio</a>',
+            contador: 0,
+            x: 0,
+            y: 0
+        },
+        methods: {
+            alterarTitulo(event){
+                this.titulo = event.target.value 
+            },
+            saudacao: function(){
+                //console.log(this)
+                return this.titulo
+            },
+            somar(){
+                this.contador++
+            },
+            atualizarMouse(e){
+                this.x = e.clientX;
+                this.y = e.clientY;
+            },
+            notificaEnter(e){
+                alert("Apertou alt e enter");
+            }
+        }
+    })
+</script>

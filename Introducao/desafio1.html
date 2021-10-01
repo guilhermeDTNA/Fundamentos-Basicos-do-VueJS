@@ -1,0 +1,28 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="desafio">
+    <p>Usando VueJS - {{nome}} ({{idade}})</p>
+
+    <p>{{idade*3}}</p>
+
+    <p>{{Math.random().toFixed(2)}}</p>
+
+    <div>
+        <img v-bind:src="imagem" height="400">
+    </div>
+
+    <div>
+        <input v-bind:value="nome" type="text">
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: '#desafio',
+        data:{
+            nome: 'Guilherme',
+            idade: 23,
+            imagem: './f6204792.jpg'
+        }
+    })
+</script>
