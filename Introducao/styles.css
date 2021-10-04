@@ -1,0 +1,22 @@
+.estilos{
+    display: flex;
+    justify-content: space-around;
+}
+
+.estilos .bloco{
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+}
+
+.estilos .b1{
+    background-color: red;
+}
+
+.estilos .b2{
+    background-color: green;
+}
+
+.estilos .b3{
+    background-color: white;
+}
