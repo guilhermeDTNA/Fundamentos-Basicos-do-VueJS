@@ -55,13 +55,17 @@
         <div class="bloco" :class="aplicarEstilo" @click="estilo1 = !estilo1">
 
         </div>
-        <div class="bloco">
+        <div class="bloco" :style="{'background-color': cor}"> <!--Ou: backgroundColor-->
 
         </div>
-        <div class="bloco">
+        <div class="bloco" :style="estilos">
 
         </div>
+        
+        
     </div>
+    <input type="text" v-model="cor">
+    <input type="text" v-model="altura">
 </div>
 
 <script src="scripts.js"></script>

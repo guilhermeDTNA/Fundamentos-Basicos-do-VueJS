@@ -8,7 +8,9 @@ new Vue({
         x: 0,
         y: 0,
 
-        estilo1: false
+        estilo1: false,
+        cor: 'red',
+        altura: 100,
     },
     computed:{
         resultado(){
@@ -19,6 +21,13 @@ new Vue({
             return{
                 b1: this.estilo1,
                 b2: !this.estilo1
+            }
+        },
+
+        estilos(){
+            return{
+                backgroundColor: this.cor,
+                height: this.altura + 'px'
             }
         }
     },
@@ -46,6 +55,6 @@ new Vue({
         },
         notificaEnter(e){
             alert("Apertou alt e enter");
-        }
+        },
     }
 })

@@ -1,0 +1,85 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<link href="styles.css" rel="stylesheet" type="text/css">
+
+<div class="desafio">
+    <h2>#01</h2>
+    <div>
+        <button @click="iniciarEfeito">Iniciar Efeito</button>
+        <div class="efeito" :class="classe1"></div>
+    </div>
+
+    <h2>#02</h2>
+    <div :class="[{circulo}, 'quadrado']">Estou sem estilo :(</div>
+
+    <h2>#03</h2>
+    <div>
+        <input type="text" v-model="classe3">
+        <div :class="classe3"></div>
+    </div>
+
+    <h2>#04</h2>
+    <div>
+        <input type="text" v-model="classe4">
+        <input type="text" @input="setCirculo">
+        <div :class="[classe4 , {circulo}]"></div>
+    </div>
+
+    <h2>#05</h2>
+    <div>
+        <input type="text" v-model="cor5">
+        <div :style="[estilo5 , {backgroundColor: cor5}]"></div>
+    </div>
+
+    <h2>#06</h2>
+    <div>
+        <button @click="iniciarProgresso">Iniciar</button>
+        <div class="barraProgresso">
+            <div class="progresso" :style="{width}">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: '.desafio',
+        data:{
+            classe1: 'destaque',
+            circulo: true,
+            classe3: '',
+            classe4: '',
+            cor5: '',
+            estilo5:{
+                width: '100px',
+                height: '100px'
+            },
+            width: '0'
+        },
+        methods:{
+            iniciarEfeito(){
+                setInterval(() => {
+                    this.classe1 = this.classe1 == 'destaque' ? 'encolher' : 'destaque'
+                }, 1000)
+            },
+            setCirculo(event){
+                if(event.target.value == "true"){
+                    this.circulo = true
+                } else{
+                    this.circulo = false
+                } 
+            },
+            iniciarProgresso(){
+                let valor = 0;
+                const temporizador = setInterval(() => {
+                    valor += 5
+                    this.width = `${valor}%`
+                    if(valor == 100){
+                        clearInterval(temporizador);
+                        alert("Acabou!");
+                    }
+                }, 500)
+            }
+        }
+    })
+</script>

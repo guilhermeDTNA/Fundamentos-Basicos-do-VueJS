@@ -20,3 +20,46 @@
 .estilos .b3{
     background-color: white;
 }
+
+.desafio .destaque{
+    background-color: red;
+    height: 100%;
+    width: 100%;
+}
+
+.desafio .encolher{
+    background-color: gray;
+    height: 50%;
+    width: 50%;
+}
+
+.desafio .circulo{
+    border-radius: 50px;
+    background-color: red;
+    width: 100px;
+    height: 100px;
+}
+
+.desafio .quadrado{
+    border-radius: 0;
+    background-color: red;
+    width: 100px;
+    height: 100px;
+}
+
+.desafio .direita{
+    float: right;
+    background-color: red;
+}
+
+.desafio .barraProgresso{
+    height: 30px;
+    width: 500px;
+    background: white;
+    border: 1px solid black;
+}
+
+.desafio .barraProgresso .progresso{
+    background: red;
+    height: 100%;
+}
