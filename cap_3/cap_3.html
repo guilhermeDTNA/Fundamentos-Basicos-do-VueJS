@@ -1,0 +1,61 @@
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <h2>Usando condicionais</h2><br><br><br>
+    <div>
+        <h3>Usando v-if, v-else-if e v-else para condicionais</h3><br><br>
+        <p v-if="logado">Usuário Logado: {{nome}}</p>
+        <p v-else-if="anonimo">Usuário anônimo</p>
+        <p v-else>Nenhum usuário logado</p>
+
+        <button @click="logado = !logado"> {{logado ? 'Sair' : 'Entrar'}} </button>
+        <input type="checkbox" v-model="anonimo">Anônimo
+
+
+
+        <h3>Usando v-show para condicionais</h3><br><br>
+
+        <p>v-show só seta display block ou none, enquanto que v-if remove o elemento da página.</p>
+        <hr>
+    </div>
+
+    <h2>Usando listas</h2>
+    <div>
+        <h4>Array de cores:</h4>
+        <ul>
+            <li v-for="cor in cores" :cor='cor'> {{cor}} </li>
+        </ul>
+    </div>
+    
+
+    <footer v-show="logado"> 
+        Desenvolvido para você!
+    </footer>
+
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            nome: "Maria",
+            logado: false,
+            anonimo: false,
+
+            cores: ['vermelho', 'verde', 'amarelo', 'azul'],
+            pessoas:[
+                {
+                    nome: 'Ana', 
+                    idade: 26, 
+                    peso: 59
+                },
+                {
+                    nome: 'Guilherme', 
+                    idade: 23, 
+                    peso: 64
+                }
+            ]
+        }
+    })
+</script>
