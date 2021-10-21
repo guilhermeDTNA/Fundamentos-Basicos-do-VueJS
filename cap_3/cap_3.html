@@ -24,8 +24,27 @@
     <div>
         <h4>Array de cores:</h4>
         <ul>
-            <li v-for="cor in cores" :cor='cor'> {{cor}} </li>
+            <li v-for="(cor, i) in cores" :cor='cor'> {{i + 0}} - {{cor}} </li>
         </ul>
+
+        <hr>
+
+        <h4>Array de cores na tag template:</h4> <!--template não cria nenhuma tag em volta do conteúdo-->
+        <template v-for="(cor, i) in cores">
+            {{i + 0}} - {{cor}}
+        </template>
+
+        <hr>
+
+        <h4>Array de objetos:</h4> <!--template não cria nenhuma tag em volta do conteúdo-->
+        <ul>
+            <li v-for="pessoa in pessoas" :key="pessoa.cpf"> <!--:key serve para facilitar alterações de ordem na lista (caso elementos puderem ser alterados)-->
+                <template v-for="(valor, chave, index) in pessoa">
+                    {{chave}} = {{valor}} ({{index + 1}})
+                </template>
+            </li>
+        </ul>
+
     </div>
     
 
@@ -34,6 +53,12 @@
     </footer>
 
 </div>
+
+<style>
+    ul{
+        list-style: none;
+    }
+</style>
 
 <script>
     new Vue({
@@ -46,11 +71,13 @@
             cores: ['vermelho', 'verde', 'amarelo', 'azul'],
             pessoas:[
                 {
+                    cpf: '11111111111',
                     nome: 'Ana', 
                     idade: 26, 
                     peso: 59
                 },
                 {
+                    cpf: '00000000000',
                     nome: 'Guilherme', 
                     idade: 23, 
                     peso: 64
